@@ -1,10 +1,8 @@
 package com.example.t1consultingtask;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
@@ -15,6 +13,7 @@ public class AppController {
     private AppService appService;
 
     @GetMapping("/frequency/{string}")
+    @ResponseStatus(HttpStatus.OK)
     public Map<Character, Integer> getFrequencyOfChars(@PathVariable String string) {
         return appService.calcFrequencyOfChars(string);
     }
